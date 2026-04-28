@@ -5,7 +5,7 @@ Sudionici: Andrej Gašparović, Patrik Dukić, Tomislav Mihelić
 
 Marketplace / Oglasnik — Quasar Vue + Node.js + MySQL/MariaDB
 
-Aplikacija je prilagođena za MySQL/MariaDB i HeidiSQL.
+Aplikacija je napravljena za MySQL/MariaDB i HeidiSQL.
 
 ## Pravila pristupa
 
@@ -32,21 +32,21 @@ Aplikacija je prilagođena za MySQL/MariaDB i HeidiSQL.
 
 ## 1. Baza u HeidiSQL-u
 
-1. Otvori HeidiSQL.
-2. Spoji se na MySQL ili MariaDB server.
-3. Otvori file:
+1. Otvoriti HeidiSQL.
+2. Spojiti se na MySQL ili MariaDB server.
+3. Otvoriti file:
 
 ```txt
 server/database/01_schema_and_seed.sql
 ```
 
-4. Pokreni cijelu skriptu.
+4. Pokrenuti cijelu skriptu.
 
 Skripta kreira bazu `marketplace_oglasnik`, sve tablice i početne podatke.
 
 ## 2. Backend
 
-U folderu `server` kopiraj `.env.example` u `.env` i prilagodi podatke:
+U folderu `server` kopirati `.env.example` u `.env` i prilagoditi podatke:
 
 ```env
 PORT=3000
@@ -58,7 +58,7 @@ DB_NAME=marketplace_oglasnik
 JWT_SECRET=promijeni_ovo_u_neki_dugi_tajni_tekst
 ```
 
-Zatim:
+Nakon toga:
 
 ```bash
 cd server
@@ -82,7 +82,7 @@ npm install
 npm run dev
 ```
 
-Frontend radi na adresi koju Vite ispiše, obično:
+Frontend radi na adresi koju Vite ispiše:
 
 ```txt
 http://localhost:5173
@@ -101,15 +101,4 @@ marko.p@email.com / lozinka123
 
 Seed korisnici u SQL skripti imaju SHA2 hash radi jednostavnog importa kroz HeidiSQL. Backend to podržava. Novi korisnici registrirani kroz aplikaciju spremaju se sigurnije, pomoću bcrypt hasha.
 
-## Popravak prikaza stranice
 
-Ova verzija uklanja kružni import `App.vue -> main.js -> App.vue`, dodaje `src/store.js`,
-puni `index.html` i Quasar Vite plugin. Ako se stranica prikazuje kao goli tekst,
-obriši `client/node_modules` i `client/package-lock.json`, zatim ponovno pokreni `npm install`.
-
-
-## V4 napomena
-
-Frontend sada eksplicitno registrira Quasar komponente koje se koriste u inline Vue komponentama.
-Ako browser javi `ERR_CONNECTION_REFUSED` za `localhost:3000`, backend nije pokrenut ili se ugasio.
->>>>>>> fba0d43 (Initial commit)
