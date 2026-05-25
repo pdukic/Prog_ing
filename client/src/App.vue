@@ -3,6 +3,7 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title class="cursor-pointer" @click="$router.push('/')">Marketplace Oglasnik</q-toolbar-title>
+        <q-btn flat label="Help" href="/help.pdf" target="_blank" />
         <q-btn flat label="Oglasi" to="/" />
         <template v-if="store.isAuth">
           <q-btn flat label="Novi oglas" to="/novi-oglas" />
