@@ -24,7 +24,7 @@ router.delete('/admin/korisnici/:email', requireAuth, requireAdmin, async (req, 
   try {
     const email = req.params.email;
     if (email === req.user.email) return err(res, new Error('Ne možeš obrisati samog sebe dok si prijavljen kao administrator.'), 400);
-
+      
     // Ručno čišćenje zbog stranih ključeva bez ON DELETE CASCADE u zadanoj shemi.
     await query('DELETE FROM PORUKA WHERE `EMAIL_POŠILJATELJA` = :email OR EMAIL_PRIMATELJA = :email OR BROJ_OGLASA IN (SELECT BROJ_OGLASA FROM OGLAS WHERE EMAIL = :email)', { email });
     await query('DELETE FROM FAVORITI WHERE EMAIL = :email OR BROJ_OGLASA IN (SELECT BROJ_OGLASA FROM OGLAS WHERE EMAIL = :email)', { email });
